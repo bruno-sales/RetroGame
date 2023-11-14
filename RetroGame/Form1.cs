@@ -1,4 +1,5 @@
 using RetroGame.Extensions;
+using RetroGame.Models;
 
 namespace RetroGame
 {
@@ -48,6 +49,20 @@ namespace RetroGame
                     }
                 }
             }
+        }
+
+        private void btComecar_Click(object sender, EventArgs e)
+        {
+            var settings = new GameSettings()
+            {
+                DiceMaxNumber = Convert.ToInt32(cbDado.SelectedValue),
+                IsRandomMap = rbMapaAleatorio.Checked,
+            };
+
+            var frm = new Form2(settings);
+            frm.Show();
+
+            this.Hide();
         }
     }
 }

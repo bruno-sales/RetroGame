@@ -74,6 +74,7 @@
             this.btComecar.TabIndex = 0;
             this.btComecar.Text = "Começar";
             this.btComecar.UseVisualStyleBackColor = true;
+            this.btComecar.Click += new System.EventHandler(this.btComecar_Click);
             // 
             // label1
             // 

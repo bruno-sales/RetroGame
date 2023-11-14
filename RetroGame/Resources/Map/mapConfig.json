@@ -1,0 +1,98 @@
+[
+  {
+    "Id": 1,
+    "Description": "Início",
+    "Color": "#0ca789",
+    "Action": 0
+  },
+  {
+    "Id": 2,
+    "Description": "Escolha alguém para citar algo que foi legal",
+    "Color": "#9510ac",
+    "Action": 0
+  },
+  {
+    "Id": 3,
+    "Description": "Escolha alguém do seu time para te dar um feedback positivo",
+    "Color": "#cee741",
+    "Action": 0
+  },
+  {
+    "Id": 4,
+    "Description": "Cite um ponto a melhorar e uma ação de melhoria",
+    "Color": "#2d9bf0",
+    "Action": 0
+  },
+  {
+    "Id": 5,
+    "Description": "Cite um ponto que foi legal",
+    "Color": "#652cb3",
+    "Action": 0
+  },
+  {
+    "Id": 6,
+    "Description": "PARABÉNS! Escolha alguém para dar um KUDO CARD",
+    "Color": "#ff00f9",
+    "Action": 0
+  },
+  {
+    "Id": 7,
+    "Description": "Avance duas casas",
+    "Color": "#a25d14",
+    "Action": 2
+  },
+  {
+    "Id": 8,
+    "Description": "Escolha alguém para citar algo que não foi legal",
+    "Color": "#da0063",
+    "Action": 0
+  },
+  {
+    "Id": 9,
+    "Description": "Cite um ponto que foi legal",
+    "Color": "#652cb3",
+    "Action": 0
+  },
+  {
+    "Id": 10,
+    "Description": "Conte uma piada ou história engraçada",
+    "Color": "#fac710",
+    "Action": 0
+  },
+  {
+    "Id": 11,
+    "Description": "Avance uma casa",
+    "Color": "#a25d14",
+    "Action": 1
+  },
+  {
+    "Id": 12,
+    "Description": "PARABÉNS! Escolha alguém para dar um KUDO CARD",
+    "Color": "#ff00f9",
+    "Action": 0
+  },
+  {
+    "Id": 13,
+    "Description": "Cite um ponto a melhorar e uma ação de melhoria",
+    "Color": "#2d9bf0",
+    "Action": 0
+  },
+  {
+    "Id": 14,
+    "Description": "Conte uma piada ou história engraçada",
+    "Color": "#fac710",
+    "Action": 0
+  },
+  {
+    "Id": 15,
+    "Description": "Cite um ponto a melhorar e uma ação de melhoria",
+    "Color": "#2d9bf0",
+    "Action": 0
+  },
+  {
+    "Id": 16,
+    "Description": "Volte 3 casas",
+    "Color": "#a25d14",
+    "Action": -3
+  }
+]
