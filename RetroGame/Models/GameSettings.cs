@@ -2,7 +2,7 @@
 {
     public class GameSettings
     {
-        public List<string> PlayerNames { get; set; }
+        public List<string> PlayerNames { get; set; } = new List<string>();
         public bool IsRandomMap { get; set; }
         public int DiceMaxNumber { get; set; }
     }

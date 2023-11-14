@@ -53,11 +53,27 @@ namespace RetroGame
 
         private void btComecar_Click(object sender, EventArgs e)
         {
+
             var settings = new GameSettings()
             {
                 DiceMaxNumber = Convert.ToInt32(cbDado.SelectedValue),
                 IsRandomMap = rbMapaAleatorio.Checked,
             };
+
+            for (var i = 1; i <= 8; i++)
+            {
+                var foundTxt = Controls.Find("txtJogador" + i, true);
+
+                if (foundTxt?.Any() != true) continue;
+                if (foundTxt[0] is not PlaceHolderTextBox foundPlaceholder) continue;
+                if (!foundPlaceholder.ReadOnly)
+                {
+                    var playerName = string.IsNullOrWhiteSpace(foundPlaceholder.Text) == false
+                        ? foundPlaceholder.Text
+                        : $"Jogador {i}";
+                    settings.PlayerNames.Add(playerName);
+                }
+            }
 
             var frm = new Form2(settings);
             frm.Show();
