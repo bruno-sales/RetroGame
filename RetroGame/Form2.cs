@@ -150,36 +150,40 @@ namespace RetroGame
                 _mappedTiles.Add(_tiles[0]);
             }
 
+            for (var i = 1; i < 16; i++)
+            {
+                _mappedTiles.Add(new Tile());
+            }
+
             var counter = 1;
             foreach (var panelId in panels)
             {
                 var panelName = "panel" + panelId;
                 var panel = Controls.Find(panelName, true)[0] as Panel;
 
-                if (panel != null)
+                if (panel == null) continue;
+
+                panel.BackColor = ColorTranslator.FromHtml(_tiles[counter].Color);
+
+                var label = new Label
                 {
-                    panel.BackColor = ColorTranslator.FromHtml(_tiles[counter].Color);
+                    Text = _tiles[counter].Description,
+                    ForeColor = Color.White,
+                    Font = new Font(this.Font.FontFamily, 12, FontStyle.Bold),
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Dock = DockStyle.Fill
+                };
+                var toolTip = new ToolTip()
+                {
+                    IsBalloon = true,
+                    ShowAlways = true,
+                };
 
-                    var label = new Label
-                    {
-                        Text = _tiles[counter].Description,
-                        ForeColor = Color.White,
-                        Font = new Font(this.Font.FontFamily, 12, FontStyle.Bold),
-                        TextAlign = ContentAlignment.MiddleCenter,
-                        Dock = DockStyle.Fill
-                    };
-                    var toolTip = new ToolTip()
-                    {
-                        IsBalloon = true,
-                        ShowAlways = true,
-                    };
+                toolTip.SetToolTip(label, _tiles[counter].Description);
 
-                    toolTip.SetToolTip(label, _tiles[counter].Description);
-
-                    panel.Controls.Add(label);
-                    _mappedTiles.Add(_tiles[counter]);
-                    counter++;
-                }
+                panel.Controls.Add(label);
+                _mappedTiles[panelId - 1] = _tiles[counter];
+                counter++;
             }
         }
 
@@ -193,12 +197,24 @@ namespace RetroGame
 
             if (_currentPlayer.Position <= 16)
             {
-                var tileBonus = _mappedTiles[_currentPlayer.Position - 1].Action;
-                _currentPlayer.Position += tileBonus;
+                var currentTile = _mappedTiles[_currentPlayer.Position - 1];
+
+                var count = 0;
+                while (currentTile.Action != 0)
+                {
+                    _currentPlayer.Position += currentTile.Action;
+                    currentTile = _mappedTiles[_currentPlayer.Position - 1];
+                    count++;
+
+                    if (count > 2) break;
+                }
             }
 
             if (_currentPlayer.Position > 16) 
                 _currentPlayer.Finished = true;
+
+            if (_currentPlayer.Position < 1)
+                _currentPlayer.Position = 1;
 
             PrintPlayerMovement();
 
@@ -225,7 +241,7 @@ namespace RetroGame
                 return;
             }
 
-            _currentPlayer = _currentPlayer.Number != _allPlayers.Count ?
+            _currentPlayer = _currentPlayer.Number != _allPlayers.Max(i=>i.Number) ?
                 playingPlayers.First(i => i.Number > _currentPlayer.Number) :
                 playingPlayers.First();
 
